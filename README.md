@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jamshaid Mehmood — Portfolio
 
-## Getting Started
+Personal portfolio for a frontend engineer specialising in analytics and
+reporting interfaces. Single page, statically prerendered, dark-only.
 
-First, run the development server:
+## Stack
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 (`@theme` tokens in `globals.css`) |
+| Animation | Motion (`motion/react`) |
+| Icons | lucide-react + two hand-rolled brand marks |
+| Fonts | Geist Sans / Geist Mono, self-hosted via the `geist` package |
+
+No chart library — every chart in the live demo is hand-written SVG.
+
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint     # eslint (flat config, react-compiler rules on)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    layout.tsx          fonts, metadata, viewport, skip link
+    page.tsx            section order
+    globals.css         design tokens + custom utilities
+    icon.svg            JM monogram favicon
+  lib/
+    content.ts          ← every piece of copy on the site
+    dashboard-data.ts   synthetic data for the live demo
+    useMediaQuery.ts    SSR-safe matchMedia hook
+  components/
+    Nav / Hero / Metrics / Work / DashboardDemo / Projects /
+    Experience / Skills / About / Contact / Footer
+    charts/             TrendChart, FunnelChart, DonutChart (raw SVG)
+    ui/                 Reveal, Counter, SectionHeading, Spotlight, BrandIcons
+public/
+  Jamshaid_Mehmood_Europass_CV.pdf              ← linked from the hero
+  Jamshaid_Mehmood_Frontend_Engineer_Resume.pdf
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Edit `src/lib/content.ts`, not the components.** Name, links, metrics, case
+studies, experience, skills, education and nav labels all come from there.
 
-## Learn More
+## Things worth knowing
 
-To learn more about Next.js, take a look at the following resources:
+- **The live demo is real.** `DashboardDemo` renders role-scoped datasets,
+  fakes ~420 ms of latency on every filter change so the skeleton loaders are
+  visible, and mirrors filter state into a mock address bar to show the
+  deep-link pattern. Swap `getDataset` for a real fetch and it works unchanged.
+- **Accent colour** is one variable: `--accent` in `globals.css`.
+- **Reduced motion** is respected globally via a `prefers-reduced-motion`
+  block; animation-heavy components also check `useReducedMotion()`.
+- **No external requests at runtime** — fonts are self-hosted, charts are
+  inline SVG, there is no analytics script.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Live at **https://jamshaid-mehmood.vercel.app** (Vercel project
+`jamshaid-mehmood`, team `jamshaids-projects`). To redeploy:
 
-## Deploy on Vercel
+```bash
+npx vercel deploy --prod
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If the domain ever changes, update `url` in `src/app/layout.tsx` so Open
+Graph and canonical URLs follow it.
