@@ -18,7 +18,7 @@ export function Projects() {
           index="03"
           eyebrow="Side projects"
           title="Where I build the backend too."
-          lead="At work I own the frontend and extend the API behind it. On my own time I ship the whole thing — schema, endpoints, auth and client. These are on GitHub, and the first one is deployed and running."
+          lead="At work I own the frontend and extend the API behind it. On my own time I ship the whole thing — schema, endpoints, auth and client. These are on GitHub, and the top two are deployed and running."
         />
 
         <div className="mt-14 space-y-4">
