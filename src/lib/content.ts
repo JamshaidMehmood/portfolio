@@ -274,8 +274,8 @@ export const projects: Project[] = [
       },
     ],
     live: {
-      url: "https://salesflow-crm-jamshaid.onrender.com/login",
-      label: "salesflow-crm-jamshaid.onrender.com",
+      url: "https://sales-flow-crm-dashboard-iks4.vercel.app/",
+      label: "sales-flow-crm-dashboard-iks4.vercel.app",
       note: "Demo login: admin@example.com / password123",
     },
     repo: "https://github.com/JamshaidMehmood/SalesFlow-CRM-Dashboard",
