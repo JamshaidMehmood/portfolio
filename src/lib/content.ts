@@ -22,7 +22,7 @@ export const profile = {
   available: true,
   availabilityNote: "Open to frontend & full-stack roles",
   intro:
-    "Frontend engineer with 2 years on the UI layer of HireStream — a multi-tenant React/Next.js hiring platform used by enterprise recruiting teams. My work sits where data meets interface: analytics dashboards, paginated report surfaces, chart systems, and the state architecture that keeps them all deep-linkable.",
+    "Frontend engineer with 2+ years on the UI layer of HireStream — a multi-tenant React/Next.js hiring platform used by enterprise recruiting teams. My work sits where data meets interface: analytics dashboards, paginated report surfaces, chart systems, and the state architecture that keeps them all deep-linkable.",
   intro2:
     "I also work down the stack. At HireStream I extend the Django REST Framework endpoints my own screens consume, and outside work I ship full-stack products end to end — SalesFlow CRM runs on Express, PostgreSQL and Prisma with JWT auth, TOTP two-factor and role-based access that I built myself.",
 };
@@ -75,7 +75,7 @@ export const metrics: Metric[] = [
 ];
 
 export const quickStats = [
-  { k: "Experience", v: "2 yrs" },
+  { k: "Experience", v: "2+ yrs" },
   { k: "Dashboards shipped", v: "3 role-based" },
   { k: "Features delivered", v: "20" },
   { k: "Locales supported", v: "EN · DE" },
@@ -328,30 +328,55 @@ export const projects: Project[] = [
     accent: "#e879a6",
   },
   {
-    id: "student-interests",
-    name: "Student Interests System",
-    tagline: "Node · Express · MongoDB",
-    year: "2023",
-    role: "Full-stack — Express API, MongoDB schema and server-rendered UI",
+    id: "instagram-clone",
+    name: "Instagram Clone",
+    tagline: "Photo feed, likes, follows",
+    year: "2026",
+    role: "Sole engineer — React client, TypeScript API, database, deployment",
     summary:
-      "A university web application for recording student interests and analysing trends across them, with two permission levels and a reporting dashboard.",
+      "An Instagram-style social app built end to end — photo feed, likes, comments, follows, saved posts, search, explore and an activity inbox. A typed React client over a TypeScript Express API, with photos stored in GridFS and streamed back through the API.",
     highlights: [
       {
-        label: "What I built",
+        label: "Frontend",
         items: [
-          "Express and MongoDB backend with session-based authentication and registration.",
-          "Two-tier permissions — administrators get view / edit / delete actions on every record, regular users only their own.",
-          "An analysis dashboard rendering activity trends as charts, plus an admin-managed interest catalogue.",
-          "Server-rendered EJS views over a Bootstrap layout, with full CRUD on students and interests.",
+          "React 18 and TypeScript on Redux Toolkit Query — likes, saves and follows apply optimistically and roll back if the request fails.",
+          "One optimistic edit patches the post everywhere it is cached — feed, explore grid, profile grid and permalink — so no stale copy is left on screen to toggle the wrong way.",
+          "Expired sessions funnel through a single in-flight refresh, so a screen full of simultaneous 401s triggers one token rotation instead of tripping the server's reuse detection.",
+          "The API returns image dimensions, so the client reserves the right box before the photo loads and the feed never reflows as you scroll.",
+          "Every colour and spacing value resolves from one token file, which makes light / dark / system theming a single-file change.",
+        ],
+      },
+      {
+        label: "API, data & testing",
+        items: [
+          "Express and TypeScript over MongoDB with photos in GridFS, so a feed page is a few hundred bytes per post instead of megabytes of inlined image.",
+          "Keyset pagination on (createdAt, _id) rather than skip — an index seek at any depth, with no rows double-served when new posts land mid-scroll.",
+          "Likes are idempotent by unique index instead of read-then-write, and counters move with atomic $inc alongside the write itself.",
+          "15-minute access tokens held in memory, refresh tokens in an httpOnly cookie that rotates on use — replaying a spent token revokes the whole family.",
+          "46 Playwright end-to-end tests across auth, feed, profile, follow, search, saved and responsive layout, driving the real API and client.",
         ],
       },
     ],
     stack: [
-      { group: "Stack", items: ["Node.js", "Express", "MongoDB", "EJS", "Bootstrap"] },
+      {
+        group: "Frontend",
+        items: ["React 18", "TypeScript", "MUI", "RTK Query", "React Router", "Zod"],
+      },
+      {
+        group: "Backend",
+        items: ["Node.js", "Express", "TypeScript", "MongoDB", "GridFS", "JWT", "Google Sign-In"],
+      },
+      { group: "Testing", items: ["Playwright"] },
+      { group: "Deploy", items: ["Vercel", "Render"] },
     ],
-    repo: "https://github.com/JamshaidMehmood/BITF20M032-ESys-PII",
-    featured: false,
-    accent: "#34d399",
+    live: {
+      url: "https://instagram-lite-iota.vercel.app/",
+      label: "instagram-lite-iota.vercel.app",
+      note: "Demo login: demo@example.com / Demo1234, or the one-click demo button · first load may take ~30–60s while the free-tier API wakes",
+    },
+    repo: "https://github.com/JamshaidMehmood/instagram-lite",
+    featured: true,
+    accent: "#fb923c",
   },
 ];
 
@@ -363,7 +388,7 @@ export const experience = [
     role: "Frontend Developer",
     product: "HireStream — multi-tenant HR & hiring SaaS",
     period: "Jul 2024 — Present",
-    duration: "2 yrs",
+    duration: "2+ yrs",
     location: "Lahore, Pakistan",
     current: true,
     blurb:

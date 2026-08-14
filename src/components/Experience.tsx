@@ -13,7 +13,7 @@ export function Experience() {
         <SectionHeading
           index="04"
           eyebrow="Experience"
-          title="Two years on one product, end to end."
+          title="Two-plus years on one product, end to end."
           lead="Depth over breadth: the same codebase from Figma handoff through production, long enough to own the consequences of my own architecture decisions."
         />
 

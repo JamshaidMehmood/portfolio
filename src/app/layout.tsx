@@ -7,7 +7,7 @@ import "./globals.css";
 
 const title = "Jamshaid Mehmood — Frontend Engineer";
 const description =
-  "Frontend engineer building analytics dashboards, reporting platforms and component systems in React, Next.js and Redux — with Django REST, Node/Express, PostgreSQL and MongoDB down the stack. Two years on HireStream, a multi-tenant hiring SaaS.";
+  "Frontend engineer building analytics dashboards, reporting platforms and component systems in React, Next.js and Redux — with Django REST, Node/Express, PostgreSQL and MongoDB down the stack. Two-plus years on HireStream, a multi-tenant hiring SaaS.";
 const url = "https://jamshaid-mehmood.vercel.app";
 
 export const metadata: Metadata = {
