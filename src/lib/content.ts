@@ -378,6 +378,58 @@ export const projects: Project[] = [
     featured: true,
     accent: "#fb923c",
   },
+  {
+    id: "fiverr-lite",
+    name: "Fiverr Lite",
+    tagline: "Two-sided freelance marketplace",
+    year: "2026",
+    role: "Sole architect & developer — v2 re-architecture of a legacy prototype",
+    summary:
+      "A full-stack, two-sided freelance marketplace: sellers publish gigs with tiered packages, buyers order through an escrow-style lifecycle, and both sides chat, exchange deliveries and leave ratings in real time — plus an admin dashboard and an AI assistant that drafts gig copy. It's a complete v2 re-architecture: I audited the legacy v1 prototype (297 issues documented in my own written audit) and rebuilt it end to end around a shared type contract, server-side authorization and payment integrity.",
+    highlights: [
+      {
+        label: "Security & payments",
+        items: [
+          "Every actor id is read from the authenticated JWT, never the request body — closing a systemic BOLA/IDOR class where any user could otherwise edit any gig or settle any order.",
+          "Order prices are derived server-side from the gig so amounts can't be tampered with, and settlement is idempotent — an order is never marked paid on the client's word.",
+          "Settlement is verified two ways: a signed Stripe payment_intent.succeeded webhook plus a server-side re-read of the PaymentIntent — so an order settles reliably and can't double-charge.",
+          "A payment-provider abstraction backs both real Stripe and a built-in mock, so the whole checkout-to-settlement flow is demoable offline and demo and production share the exact same settlement code.",
+          "Strict credentialed CORS allowlist, a path-scoped refresh cookie, and token-version session revocation.",
+        ],
+      },
+      {
+        label: "Architecture & real-time",
+        items: [
+          "A shared @fiverr-lite/shared package makes one Zod source the single source of truth — generating both runtime validation and the static DTO types imported by the API and the web app, so client and server can't drift.",
+          "Layered backend — routes → controllers → services → models — with one module per domain: auth, gigs, orders, payments, chat, ratings, admin, AI and uploads.",
+          "An escrow-style order state machine allows only legal transitions (awaiting payment → paid → in progress → delivered → completed, plus cancellation), enforced in the service layer with DB-level invariants like one active order per buyer+gig.",
+          "The API parses its entire environment with Zod at boot and refuses to start if misconfigured, instead of failing deep in a request handler.",
+          "Socket.IO powers live buyer↔seller chat and live order-status updates.",
+          "Six competing styling approaches collapsed into a single design-token source feeding Tailwind and MUI v6, with full dark mode and defined loading / empty / error states.",
+        ],
+      },
+    ],
+    stack: [
+      {
+        group: "Frontend",
+        items: ["Next.js 14", "TypeScript", "Tailwind", "MUI v6", "TanStack Query", "Socket.IO"],
+      },
+      {
+        group: "Backend",
+        items: ["Node.js", "Express 4", "TypeScript", "MongoDB", "Mongoose 8", "Zod", "JWT", "Stripe"],
+      },
+      { group: "Testing", items: ["Vitest", "mongodb-memory-server", "Playwright"] },
+      { group: "Deploy", items: ["Vercel", "Render"] },
+    ],
+    live: {
+      url: "https://fiverr-lite-web.vercel.app/",
+      label: "fiverr-lite-web.vercel.app",
+      note: "First load may take ~30–60s while the free-tier backend wakes",
+    },
+    repo: "https://github.com/JamshaidMehmood/fiverr-lite",
+    featured: true,
+    accent: "#1dbf73",
+  },
 ];
 
 /* ------------------------------------------------------------------ */
