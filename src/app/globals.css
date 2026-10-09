@@ -6,6 +6,8 @@
    panels on 1px borders, one signal accent, mono type for data labels.
 ------------------------------------------------------------------- */
 :root {
+  color-scheme: dark;
+
   --canvas: #07080a;
   --canvas-2: #0b0d10;
   --panel: #101317;
@@ -23,7 +25,100 @@
   --warn: #fbbf24;
   --neg: #fb7185;
 
+  /* Tinted overlays. Flipping these is what lets one set of components
+     render on either canvas — `bg-white/5` would vanish on a light one. */
+  --surface-1: rgba(255, 255, 255, 0.025);
+  --surface-2: rgba(255, 255, 255, 0.04);
+  --surface-3: rgba(255, 255, 255, 0.055);
+  --surface-4: rgba(255, 255, 255, 0.08);
+  --surface-5: rgba(255, 255, 255, 0.22);
+
+  --panel-top: rgba(255, 255, 255, 0.03);
+  --panel-bottom: rgba(255, 255, 255, 0.008);
+  --panel-top-hover: rgba(255, 255, 255, 0.055);
+  --panel-bottom-hover: rgba(255, 255, 255, 0.012);
+
+  --dot: rgba(255, 255, 255, 0.075);
+  --shimmer: rgba(255, 255, 255, 0.07);
+  --noise-opacity: 0.03;
+  --scrollbar: #23272e;
+  --scrollbar-hover: #333942;
+  --shadow-lift: 0 28px 70px -28px rgba(0, 0, 0, 0.9);
+
+  --display-1: #ffffff;
+  --display-2: #d3d8e0;
+  --display-3: #868e9c;
+
+  /* avatar disc */
+  --av-1: #1b2030;
+  --av-2: #12151c;
+  --av-3: #0a0c11;
+
+  /* id badge card */
+  --badge-1: #14171e;
+  --badge-2: #0c0e13;
+  --badge-3: #0a0c10;
+  --badge-sheen: rgba(255, 255, 255, 0.045);
+  --badge-strap: rgba(123, 97, 255, 0.3);
+  --badge-clip-1: #2b313b;
+  --badge-clip-2: #14171d;
+
   --radius: 14px;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --canvas: #faf9f7;
+  --canvas-2: #f1f0ec;
+  --panel: #ffffff;
+  --line: rgba(17, 24, 39, 0.1);
+  --line-strong: rgba(17, 24, 39, 0.2);
+
+  --text: #14181f;
+  --text-dim: #4c5663;
+  --text-faint: #7d8794;
+
+  --accent: #5b3df0;
+  --accent-2: #0b8ba8;
+
+  --pos: #0b8f62;
+  --warn: #a35c08;
+  --neg: #d6295a;
+
+  --surface-1: rgba(17, 24, 39, 0.022);
+  --surface-2: rgba(17, 24, 39, 0.04);
+  --surface-3: rgba(17, 24, 39, 0.06);
+  --surface-4: rgba(17, 24, 39, 0.08);
+  --surface-5: rgba(17, 24, 39, 0.22);
+
+  --panel-top: rgba(255, 255, 255, 0.9);
+  --panel-bottom: rgba(17, 24, 39, 0.016);
+  --panel-top-hover: rgba(255, 255, 255, 1);
+  --panel-bottom-hover: rgba(17, 24, 39, 0.03);
+
+  --dot: rgba(17, 24, 39, 0.075);
+  --shimmer: rgba(17, 24, 39, 0.05);
+  --noise-opacity: 0.02;
+  --scrollbar: #cfd3da;
+  --scrollbar-hover: #b4bac4;
+  --shadow-lift: 0 24px 56px -26px rgba(17, 24, 39, 0.4);
+
+  --display-1: #0b0e14;
+  --display-2: #2d3542;
+  --display-3: #6a7483;
+
+  --av-1: #e7e9f2;
+  --av-2: #dfe2ec;
+  --av-3: #cfd4e2;
+
+  --badge-1: #ffffff;
+  --badge-2: #f7f7f4;
+  --badge-3: #f1f1ed;
+  --badge-sheen: rgba(17, 24, 39, 0.03);
+  --badge-strap: rgba(91, 61, 240, 0.35);
+  --badge-clip-1: #dcdfe6;
+  --badge-clip-2: #b9bec8;
 }
 
 @theme inline {
@@ -40,6 +135,11 @@
   --color-pos: var(--pos);
   --color-warn: var(--warn);
   --color-neg: var(--neg);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-4: var(--surface-4);
+  --color-surface-5: var(--surface-5);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -58,6 +158,9 @@
 
   body {
     background: var(--canvas);
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
     color: var(--text);
     font-family: var(--font-geist-sans), system-ui, sans-serif;
     overflow-x: hidden;
@@ -76,12 +179,12 @@
     background: var(--canvas);
   }
   ::-webkit-scrollbar-thumb {
-    background: #23272e;
+    background: var(--scrollbar);
     border-radius: 99px;
     border: 2px solid var(--canvas);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #333942;
+    background: var(--scrollbar-hover);
   }
 
   :focus-visible {
@@ -107,7 +210,7 @@
 }
 
 @utility panel {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.008));
+  background: linear-gradient(180deg, var(--panel-top), var(--panel-bottom));
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -119,12 +222,17 @@
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   &:hover {
     border-color: var(--line-strong);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012));
+    background: linear-gradient(180deg, var(--panel-top-hover), var(--panel-bottom-hover));
   }
 }
 
 @utility text-gradient {
-  background: linear-gradient(102deg, #ffffff 0%, #d3d8e0 44%, #868e9c 100%);
+  background: linear-gradient(
+    102deg,
+    var(--display-1) 0%,
+    var(--display-2) 44%,
+    var(--display-3) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -146,7 +254,7 @@
 }
 
 @utility dot-bg {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.075) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
   background-size: 22px 22px;
 }
 
@@ -157,7 +265,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.03;
+    opacity: var(--noise-opacity);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }

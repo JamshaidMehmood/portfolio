@@ -61,7 +61,7 @@ function Row({
     <div
       className={`group relative transition-colors duration-400 ${
         last ? "" : "border-b border-line"
-      } ${isOpen ? "bg-white/[0.022]" : "hover:bg-white/[0.015]"}`}
+      } ${isOpen ? "bg-surface-1" : "hover:bg-surface-1"}`}
     >
       {/* accent rail */}
       <motion.span
@@ -150,7 +150,7 @@ function Row({
                   {study.stack.map((s) => (
                     <span
                       key={s}
-                      className="mono rounded-md border border-line bg-white/[0.03] px-2 py-1 text-[10.5px] text-text-dim"
+                      className="mono rounded-md border border-line bg-surface-1 px-2 py-1 text-[10.5px] text-text-dim"
                     >
                       {s}
                     </span>

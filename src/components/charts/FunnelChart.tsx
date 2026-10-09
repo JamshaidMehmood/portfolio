@@ -29,7 +29,7 @@ export function FunnelChart({ data }: { data: FunnelStage[] }) {
                 </span>
               </span>
             </div>
-            <div className="h-[7px] overflow-hidden rounded-full bg-white/[0.045]">
+            <div className="h-[7px] overflow-hidden rounded-full bg-surface-2">
               <motion.div
                 key={`${s.stage}-${s.count}`}
                 className="h-full rounded-full"

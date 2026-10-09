@@ -71,9 +71,9 @@ export function DashboardDemo() {
         />
 
         <Reveal delay={0.1}>
-          <div className="mt-14 overflow-hidden rounded-[18px] border border-line-strong bg-canvas-2/70 shadow-[0_28px_80px_-30px_rgba(0,0,0,0.9)] backdrop-blur">
+          <div className="mt-14 overflow-hidden rounded-[18px] border border-line-strong bg-canvas-2/70 shadow-[var(--shadow-lift)] backdrop-blur">
             {/* browser chrome ------------------------------------- */}
-            <div className="flex items-center gap-3 border-b border-line bg-white/[0.022] px-4 py-3">
+            <div className="flex items-center gap-3 border-b border-line bg-surface-1 px-4 py-3">
               <div className="flex gap-1.5">
                 {["#fb7185", "#fbbf24", "#34d399"].map((c) => (
                   <span
@@ -276,7 +276,7 @@ function SegmentedControl({
           {value === o.id && (
             <motion.span
               layoutId={`seg-${name}`}
-              className="absolute inset-0 rounded-full border border-line-strong bg-white/[0.075]"
+              className="absolute inset-0 rounded-full border border-line-strong bg-surface-4"
               transition={{ type: "spring", stiffness: 400, damping: 34 }}
             />
           )}
@@ -316,13 +316,13 @@ function Panel({
 function Skeleton({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-md bg-white/[0.045] ${className}`}
+      className={`relative overflow-hidden rounded-md bg-surface-2 ${className}`}
     >
       <motion.div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent)",
+            "linear-gradient(90deg, transparent, var(--shimmer), transparent)",
         }}
         animate={{ x: ["-100%", "100%"] }}
         transition={{ duration: 1.2, repeat: Infinity, ease: "linear" }}
@@ -363,7 +363,7 @@ function PerformanceTable({
           >
             <td className="py-2.5 pr-3">
               <div className="flex items-center gap-2.5">
-                <span className="grid size-6 shrink-0 place-items-center rounded-full border border-line bg-white/[0.04]">
+                <span className="grid size-6 shrink-0 place-items-center rounded-full border border-line bg-surface-2">
                   <span className="mono text-[9px] text-text-dim">
                     {r.name
                       .split(" ")
@@ -380,7 +380,7 @@ function PerformanceTable({
             </td>
             <td className="py-2.5 text-right">
               <div className="flex items-center justify-end gap-2">
-                <span className="hidden h-1 w-14 overflow-hidden rounded-full bg-white/[0.06] sm:block">
+                <span className="hidden h-1 w-14 overflow-hidden rounded-full bg-surface-3 sm:block">
                   <motion.span
                     className="block h-full rounded-full bg-gradient-to-r from-accent to-accent-2"
                     initial={{ width: 0 }}

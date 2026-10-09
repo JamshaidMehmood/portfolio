@@ -21,10 +21,24 @@ export const profile = {
   resumeLabel: "Résumé",
   available: true,
   availabilityNote: "Open to frontend & full-stack roles",
+  /** Shown on the hero identity badge — short, scannable facts. */
+  badge: {
+    id: "JM-2024-07",
+    org: "Arbisoft",
+    orgRole: "Frontend Engineer",
+    facts: [
+      { k: "Based in", v: "Lahore, Pakistan" },
+      { k: "Currently", v: "Frontend Engineer · Arbisoft" },
+      { k: "Focus", v: "Analytics UI · Test automation" },
+      { k: "Stack", v: "React · Next.js · TypeScript" },
+    ],
+  },
   intro:
     "Frontend engineer with 2+ years on the UI layer of HireStream — a multi-tenant React/Next.js hiring platform used by enterprise recruiting teams. My work sits where data meets interface: analytics dashboards, paginated report surfaces, chart systems, and the state architecture that keeps them all deep-linkable.",
   intro2:
     "I also work down the stack. At HireStream I extend the Django REST Framework endpoints my own screens consume, and outside work I ship full-stack products end to end — SalesFlow CRM runs on Express, PostgreSQL and Prisma with JWT auth, TOTP two-factor and role-based access that I built myself.",
+  intro3:
+    "Most recently I turned that product knowledge on the test suite: over two months I took HireStream's WebdriverIO end-to-end coverage from 257 to 641 automated cases across 25 product areas, 14 of which had no automation at all. Building the screens and then proving they hold up turns out to be the same job from two directions.",
 };
 
 export const heroRotators = [
@@ -33,6 +47,7 @@ export const heroRotators = [
   "component systems",
   "design-system UI",
   "data-heavy tables",
+  "end-to-end test suites",
 ];
 
 export type Metric = {
@@ -77,7 +92,9 @@ export const metrics: Metric[] = [
 export const quickStats = [
   { k: "Experience", v: "2+ yrs" },
   { k: "Dashboards shipped", v: "3 role-based" },
+  { k: "Report UIs rebuilt", v: "9" },
   { k: "Features delivered", v: "20" },
+  { k: "E2E tests authored", v: "+384" },
   { k: "Locales supported", v: "EN · DE" },
 ];
 
@@ -213,8 +230,112 @@ export const caseStudies: CaseStudy[] = [
     stack: ["i18next", "React", "Locale formatting"],
     accent: "#a78bfa",
   },
+  {
+    id: "automation",
+    index: "07",
+    title: "End-to-End Coverage Expansion",
+    kicker: "257 → 641 automated tests",
+    summary:
+      "Two months spent taking the HireStream WebdriverIO suite from partial coverage to a suite that actually guards the product — 384 new test cases across 25 areas, 14 of which had none.",
+    problem:
+      "The e2e suite covered a fraction of the product. Whole areas — reports, role dashboards, the permission matrix, the public careers site — had zero automated tests, so regressions in them were found by people, late.",
+    approach: [
+      "Wrote specs against the product's real frontend and backend source — actual selectors, route guards and API permissions — rather than against an assumed spec.",
+      "Built a role and permission matrix suite covering Recruiter, Team Lead, Leadership, Hiring Manager and Reviewer, asserting both the UI surface and API-level 403s.",
+      "Added 12 page objects and 9 API seeding helpers so specs create their own data through the API instead of slow UI setup.",
+      "Fixed the flake classes underneath: a tagging chip race, portaled react-select handling, server-side recipient search for Mailosaur email lookup, OTP login and timeout hardening.",
+    ],
+    outcome:
+      "641 automated cases across 25 product areas, delivered through 21 merged pull requests, with nightly failures triaged and root-caused against the product source rather than retried.",
+    stack: ["WebdriverIO", "TypeScript", "Mocha", "Allure", "Mailosaur"],
+    accent: "#38bdf8",
+  },
 ];
 
+/* ------------------------------------------------------------------ */
+
+/**
+ * HireStream e2e coverage expansion (Aug–Oct 2026).
+ * Every figure here was computed from the repository history, not estimated —
+ * see `automation.method` for how. Keep it that way when editing.
+ */
+export type AutomationStat = {
+  label: string;
+  /** Omitted where a before/after comparison would overstate the claim. */
+  before?: number;
+  after: number;
+  delta: string;
+  note: string;
+};
+
+export const automation = {
+  eyebrow: "Test automation",
+  title: "Proving the platform holds.",
+  lead:
+    "Two months on HireStream's end-to-end suite: 384 new automated test cases across 25 product areas, 14 of which had no coverage at all. Delivered through 21 merged pull requests, with every spec written against the product's real selectors, route guards and API permissions.",
+  period: "Aug — Oct 2026",
+  stack: [
+    "WebdriverIO 8",
+    "TypeScript",
+    "Mocha",
+    "Allure",
+    "Mailosaur",
+    "GitHub Actions",
+  ],
+  headline: [
+    {
+      label: "Automated test cases",
+      before: 257,
+      after: 641,
+      delta: "+384",
+      note: "+149% in two months",
+    },
+    {
+      label: "Spec files",
+      before: 69,
+      after: 188,
+      delta: "+119",
+      note: "New suites across the product",
+    },
+    {
+      label: "Product areas covered",
+      after: 25,
+      delta: "14 from zero",
+      note: "Reports, dashboards, permissions, careers",
+    },
+    {
+      label: "Page objects & API helpers",
+      after: 21,
+      delta: "12 + 9",
+      note: "Specs seed their own data through the API",
+    },
+  ] as AutomationStat[],
+  /** before → after per product area; `after - before` sums to +384. */
+  coverage: [
+    { area: "Reports", before: 6, after: 123 },
+    { area: "Candidates", before: 43, after: 100 },
+    { area: "Users, roles & permissions", before: 1, after: 25 },
+    { area: "Role dashboards", before: 0, after: 21 },
+    { area: "Session & auth resilience", before: 0, after: 21 },
+    { area: "Jobs", before: 14, after: 34 },
+    { area: "Careers site", before: 0, after: 18 },
+    { area: "Tags", before: 0, after: 16 },
+    { area: "Forms", before: 11, after: 23 },
+    { area: "Requisitions", before: 0, after: 11 },
+    { area: "Candidate reviews", before: 0, after: 10 },
+    { area: "Application history", before: 0, after: 9 },
+    { area: "CV viewer", before: 0, after: 7 },
+    { area: "Workflows", before: 0, after: 7 },
+    { area: "Candidate merge", before: 0, after: 6 },
+    { area: "Sourcing", before: 1, after: 6 },
+    { area: "Reference check", before: 0, after: 5 },
+    { area: "Data import", before: 0, after: 4 },
+    { area: "Onboarding", before: 0, after: 4 },
+    { area: "Online assessments", before: 0, after: 3 },
+  ],
+  coverageTail:
+    "Plus interviews, referrals, accounts and cross-cutting suites — and role-based coverage for Recruiter, Team Lead, Leadership, Hiring Manager and Reviewer, asserting both the UI surface and API-level 403s.",
+};
 /* ------------------------------------------------------------------ */
 
 export type Project = {
@@ -478,6 +599,16 @@ export const experience = [
         ],
       },
       {
+        title: "End-to-End Test Automation",
+        points: [
+          "Expanded the platform's WebdriverIO/TypeScript e2e suite from 257 to 641 automated test cases (+149%) and from 69 to 188 spec files over two months, across 25 product areas — 14 of which had no automation before.",
+          "Built role-based coverage for the three dashboards and a user/role/permission matrix (Recruiter, Team Lead, Leadership, Hiring Manager, Reviewer), asserting both the UI surface and API-level 403s.",
+          "Authored 12 page objects and 9 API seeding helpers so specs provision their own data through the API, plus Mailosaur-driven email and OTP flow testing.",
+          "Triaged nightly CI runs, root-causing flaky and environment-specific failures against the product source instead of masking them with retries.",
+          "Delivered through 21 merged pull requests under conventional commits with pre-commit lint and format gates.",
+        ],
+      },
+      {
         title: "Craft & Quality",
         points: [
           "Rolled out i18next (EN/DE) across the full frontend, including server-driven workflow labels.",
@@ -539,6 +670,19 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    title: "Test Automation",
+    note: "Coverage I wrote and maintain",
+    items: [
+      { name: "WebdriverIO", level: 88 },
+      { name: "Playwright", level: 84 },
+      { name: "TypeScript (specs)", level: 86 },
+      { name: "Page-object design", level: 88 },
+      { name: "API seeding (supertest)", level: 82 },
+      { name: "Allure / CI triage", level: 82 },
+      { name: "Flake root-cause", level: 85 },
+    ],
+  },
+  {
     title: "UI, Tooling & Practice",
     note: "The rest of the delivery surface",
     items: [
@@ -577,6 +721,11 @@ export const marqueeSkills = [
   "Formik",
   "Figma",
   "WebSockets",
+  "WebdriverIO",
+  "Playwright",
+  "Mocha",
+  "Allure",
+  "GitHub Actions",
   "Agile",
 ];
 
@@ -629,9 +778,9 @@ export const certifications = [
 export const navItems = [
   { id: "work", label: "Work" },
   { id: "dashboard", label: "Live Demo" },
+  { id: "automation", label: "Automation" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
-  { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
 ];

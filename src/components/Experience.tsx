@@ -11,7 +11,7 @@ export function Experience() {
     <section id="experience" className="relative border-t border-line py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
-          index="04"
+          index="05"
           eyebrow="Experience"
           title="Two-plus years on one product, end to end."
           lead="Depth over breadth: the same codebase from Figma handoff through production, long enough to own the consequences of my own architecture decisions."
@@ -33,7 +33,7 @@ export function Experience() {
                 <div className="relative border-b border-line p-6 sm:p-8">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
-                      <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-line-strong bg-white/[0.04]">
+                      <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-line-strong bg-surface-2">
                         <Building2 className="size-5 text-accent" />
                       </span>
                       <div>

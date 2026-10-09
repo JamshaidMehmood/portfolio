@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navItems, profile } from "@/lib/content";
+import { ThemeToggle } from "./ui/ThemeToggle";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -110,7 +111,7 @@ export function Nav() {
                 {active === item.id && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full border border-line-strong bg-white/[0.055]"
+                    className="absolute inset-0 rounded-full border border-line-strong bg-surface-3"
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}
@@ -124,9 +125,11 @@ export function Nav() {
           </div>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
+
             <a
               href={`mailto:${profile.email}`}
-              className="group hidden items-center gap-1.5 whitespace-nowrap rounded-full border border-line-strong bg-white/[0.04] px-4 py-[7px] text-[13px] font-medium text-text transition-all duration-300 hover:border-accent/50 hover:bg-accent/10 sm:flex"
+              className="group hidden items-center gap-1.5 whitespace-nowrap rounded-full border border-line-strong bg-surface-2 px-4 py-[7px] text-[13px] font-medium text-text transition-all duration-300 hover:border-accent/50 hover:bg-accent/10 sm:flex"
             >
               Get in touch
               <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

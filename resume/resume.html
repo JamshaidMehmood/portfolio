@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jamshaid Mehmood — Frontend Engineer</title>
+    <style>
+      /* ----------------------------------------------------------------
+         Print-first stylesheet. Rendered to PDF by resume/build.mjs with
+         headless Chrome; page size and margins are set here, not by the
+         print dialog, so the output is identical on any machine.
+      ---------------------------------------------------------------- */
+      /* Carlito is the metric-compatible Calibri clone LibreOffice used for
+         the original PDF. Vendored so the build doesn't depend on
+         LibreOffice being installed, and so Chrome can't fall back to a
+         system font (which is what changed the look). */
+      @font-face {
+        font-family: "Carlito";
+        src: url("fonts/Carlito-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Carlito";
+        src: url("fonts/Carlito-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Carlito";
+        src: url("fonts/Carlito-Italic.ttf") format("truetype");
+        font-weight: 400;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Carlito";
+        src: url("fonts/Carlito-BoldItalic.ttf") format("truetype");
+        font-weight: 700;
+        font-style: italic;
+      }
+
+      /* Geometry below is measured from the original PDF: 35pt side
+         margins, 9.5pt body on an 11.6pt line. */
+      @page {
+        size: Letter;
+        margin: 27pt 35pt 30pt;
+      }
+
+      :root {
+        --navy: #1f3a5f;
+        --ink: #1a1a1a;
+        --muted: #3f3f3f;
+        --org: #33475f;
+        --rule: #9fb0c4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Carlito", Calibri, Carlito, sans-serif;
+        font-size: 9.5pt;
+        line-height: 1.22;
+        color: var(--ink);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: var(--navy);
+        text-decoration: underline;
+      }
+
+      /* header -------------------------------------------------------- */
+      .name {
+        font-size: 20pt;
+        font-weight: 700;
+        color: var(--navy);
+        text-align: center;
+        line-height: 1.22;
+      }
+
+      .title-line {
+        text-align: center;
+        font-size: 11pt;
+        font-weight: 700;
+        color: var(--navy);
+        line-height: 1.22;
+        margin-top: 7pt;
+      }
+
+      .contact {
+        text-align: center;
+        font-size: 9.5pt;
+        color: var(--muted);
+        line-height: 1.22;
+        margin-top: 4.6pt;
+      }
+
+      /* sections ------------------------------------------------------ */
+      h2 {
+        font-size: 10pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--navy);
+        line-height: 1.22;
+        border-bottom: 0.8pt solid var(--rule);
+        margin: 6.9pt 0 5.6pt;
+        padding-bottom: 1pt;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 10pt;
+      }
+
+      .role {
+        font-weight: 700;
+        font-size: 10pt;
+        line-height: 1.22;
+      }
+
+      .dates {
+        font-size: 10pt;
+        color: var(--navy);
+        white-space: nowrap;
+      }
+
+      .org {
+        font-size: 9.5pt;
+        font-style: italic;
+        color: var(--org);
+        margin-top: 2pt;
+      }
+
+      .group {
+        font-weight: 700;
+        font-style: italic;
+        font-size: 9.5pt;
+        color: var(--navy);
+        margin-top: 4.5pt;
+      }
+
+      ul {
+        margin: 3pt 0 0;
+        padding-left: 14.4pt;
+      }
+
+      li {
+        margin-bottom: 1.2pt;
+        text-align: left;
+      }
+
+      /* projects ------------------------------------------------------ */
+      .project {
+        margin-top: 6.5pt;
+      }
+
+      .project:first-of-type {
+        margin-top: 3pt;
+      }
+
+      .stack {
+        font-style: italic;
+        font-size: 9.5pt;
+        color: var(--org);
+        margin-top: 2pt;
+      }
+
+      /* skills -------------------------------------------------------- */
+      .para {
+        margin-top: 3pt;
+      }
+
+      .skill {
+        margin-bottom: 2.2pt;
+      }
+
+      /* The original puts extra space around its “|” separators. */
+      .sep {
+        padding: 0 2.6pt;
+      }
+
+      .skill b {
+        color: var(--navy);
+      }
+
+      .edu {
+        margin-top: 4.5pt;
+      }
+
+      .edu:first-of-type {
+        margin-top: 2pt;
+      }
+
+      /* Keep a heading from stranding at the foot of a page. */
+      h2,
+      .group {
+        break-after: avoid;
+      }
+
+      .edu {
+        break-inside: avoid;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="name">Jamshaid Mehmood</div>
+      <div class="title-line">
+        Frontend Engineer <span class="sep">|</span> React · Next.js · Redux
+        <span class="sep">|</span> Test Automation <span class="sep">|</span>
+        Node.js · Django REST
+      </div>
+      <div class="contact">
+        Lahore, Pakistan · +92 304 5297828 ·
+        <a href="mailto:jamshaidmehmood1234@gmail.com"
+          >jamshaidmehmood1234@gmail.com</a
+        >
+        ·
+        <a href="https://jamshaid-mehmood.vercel.app">Portfolio</a> ·
+        <a href="https://github.com/JamshaidMehmood">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/jamshaid-mehmood-05b88720a/"
+          >LinkedIn</a
+        >
+      </div>
+    </header>
+
+    <h2>Summary</h2>
+    <p>
+      Frontend engineer with 2+ years on the UI layer of HireStream, a
+      React/Next.js hiring SaaS used by enterprise recruiting teams, now leading
+      its application-wide UI revamp. Shipped 3 role-based analytics dashboards,
+      rebuilt 9 paginated report UIs, and led a 30+ module migration to hooks
+      that cut technical debt by 40%. Also owns the shared component library and
+      i18next EN/DE.
+    </p>
+    <p class="para">
+      Recently expanded the same platform's WebdriverIO end-to-end suite from
+      257 to 641 automated test cases (+149%) across 25 product areas, 14 of
+      which had no automation before — building the screens and then proving
+      they hold up.
+    </p>
+    <p class="para">
+      Works down the stack too: extends the Django REST Framework endpoints
+      behind those screens — serializers, viewsets, filter backends and
+      pagination — and ships full-stack side projects end to end, four of them
+      deployed and publicly running.
+    </p>
+
+    <h2>Experience</h2>
+    <div class="row">
+      <span class="role">Frontend Developer</span>
+      <span class="dates">Jul 2024 – Present&nbsp; (2+ yrs)</span>
+    </div>
+    <div class="org">
+      Arbisoft, Lahore, Pakistan <span class="sep">|</span> HireStream — multi-tenant
+      HR &amp; hiring SaaS
+      (React 17/Next.js, Redux, Django REST)
+    </div>
+
+    <div class="group">Application-Wide UI Revamp (Ongoing)</div>
+    <ul>
+      <li>
+        Currently leading a revamp of the platform's entire user interface —
+        modernising the visual language, layout and interaction patterns across
+        every module, from Figma redesigns through to production.
+      </li>
+      <li>
+        Rolling the new patterns out through the shared component library so the
+        redesign lands consistently across dashboards, reports and workflow
+        screens rather than page by page.
+      </li>
+    </ul>
+
+    <div class="group">End-to-End Test Automation (WebdriverIO · TypeScript)</div>
+    <ul>
+      <li>
+        Expanded the platform's end-to-end suite from <b>257 to 641 automated
+        test cases (+149%)</b> and from 69 to 188 spec files in two months,
+        adding coverage across 25 product areas — 14 of which had no automation
+        before.
+      </li>
+    </ul>
+
+    <div class="group">Component Architecture &amp; Reusability</div>
+    <ul>
+      <li>
+        Built a shared React component library (MetricsCard, DateRangePicker,
+        OffsetPagination, EllipsisWithTooltip, NoteModal, RecruiterCard,
+        FilterBar) adopted across 9 report UIs and 3 dashboards, cutting
+        duplication and build time.
+      </li>
+    </ul>
+
+    <div class="group">Dashboards &amp; Reports (Figma → Production)</div>
+    <ul>
+      <li>
+        Turned Figma wireframes into 3 responsive role-based dashboards
+        (Recruiter, Team Lead, Leadership) with HiringFunnel,
+        GenderDistribution, OfferAcceptanceTrend, RecruiterPerformanceTable and
+        UpcomingInterviewsCard — all URL-synced.
+      </li>
+      <li>
+        Rebuilt 9 report UIs (Hiring, Current Openings, Candidate Master, Offer
+        Data, Source Performance, Time-Based Metrics, Scheduling, Referral,
+        Custom List) with debounced search, server-side sort/filter and CSV
+        export, URL-backed.
+      </li>
+      <li>
+        Built an async export progress UI — a WebSocket-driven progress snackbar
+        with a linear progress bar and disabled states — giving users real-time
+        feedback during large report exports.
+      </li>
+    </ul>
+
+    <div class="group">Backend — Django REST Framework</div>
+    <ul>
+      <li>
+        Extended the DRF endpoints behind the report and dashboard surfaces —
+        serializers, viewsets, filter backends, and pagination — so the API
+        returned the exact shape the UI needed instead of the client reshaping
+        payloads.
+      </li>
+      <li>
+        Moved sorting and filtering server-side so large result sets stay off
+        the client and pagination is authoritative; wrote SQL and Python scripts
+        against the product database to verify dashboard figures and answer
+        ad-hoc requests.
+      </li>
+    </ul>
+
+    <div class="group">State Management &amp; URL Sync</div>
+    <ul>
+      <li>
+        Implemented Redux action/reducer/selector patterns with URL-backed
+        filter state (search, page, page size, date range), enabling deep-link
+        restore, per-table page-size memory, and zero-loss browser navigation
+        across all paginated views.
+      </li>
+    </ul>
+
+    <div class="group">Class-to-Functional Migration</div>
+    <ul>
+      <li>
+        Led a platform-wide migration of 30+ modules (admin, job listing/detail,
+        sourcing, requisitions, candidate profile, interviews, onboarding,
+        assessments, bulk actions) from class components to hooks, cutting
+        technical debt by 40%.
+      </li>
+    </ul>
+
+    <div class="group">Responsive &amp; Cross-Browser UI</div>
+    <ul>
+      <li>
+        Built responsive grid layouts and mobile/desktop dual-position Job
+        Actions menus, enforced cross-browser compatibility across Chrome,
+        Firefox and Safari, plus a consistent chip/badge and
+        tooltip-on-truncation pattern.
+      </li>
+      <li>
+        Built the Careers &amp; Job Discovery UI, including faceted search,
+        bookmarks, recency labels, and similarity scores on job cards, plus
+        step-by-step virtual tour onboarding for Settings, Jobs, Candidates, and
+        Requisitions.
+      </li>
+    </ul>
+
+    <div class="group">Internationalization (i18n)</div>
+    <ul>
+      <li>
+        Rolled out i18next across the full frontend (EN/DE) — all new
+        components, dynamic workflow/stage labels, and locale-aware dropdowns
+        via a getTranslatedLabel utility — enabling the platform to serve
+        non-English enterprise clients.
+      </li>
+    </ul>
+
+    <div class="group">Performance &amp; UX Polish</div>
+    <ul>
+      <li>
+        Introduced skeleton loaders, debounced search inputs, and lazy-loaded
+        chart wrappers (CustomBar, CustomDoughnut, CustomHorizontalBar via HOCs),
+        cutting perceived load time on data-heavy report pages.
+      </li>
+      <li>
+        Diagnosed and fixed a Formik re-init bug that preserved stale form
+        state, search-highlight corruption from overlapping ranges, a
+        filter-reset-on-refresh bug, and a double-API-call bug on rebase —
+        reducing reported UI/UX issues by 30%.
+      </li>
+    </ul>
+
+    <div class="group">Code Quality &amp; Delivery</div>
+    <ul>
+      <li>
+        Participated in PR reviews, enforced ESLint standards with filename
+        context in webpack output, and shipped 20 distinct features across
+        Agile/Scrum sprints — consistently delivering end-to-end UI from design
+        handoff to production.
+      </li>
+    </ul>
+
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="row">
+        <span class="role">SalesFlow CRM — Full-Stack Sales CRM</span>
+        <span class="dates">2026</span>
+      </div>
+      <div class="stack">
+        React 19 · Express 5 · PostgreSQL · Prisma <span class="sep">|</span>
+        <a href="https://sales-flow-crm-dashboard-iks4.vercel.app/">Live Demo</a>
+        ·
+        <a href="https://github.com/JamshaidMehmood/SalesFlow-CRM-Dashboard"
+          >Source</a
+        >
+      </div>
+      <ul>
+        <li>
+          Sole engineer: designed the PostgreSQL schema with Prisma, built the
+          Express 5 REST API, and shipped the React client on top — deployed and
+          publicly running.
+        </li>
+        <li>
+          Authentication written from scratch: JWT sessions, bcrypt hashing,
+          Google OAuth token verification, and TOTP two-factor with QR enrolment
+          and recovery codes.
+        </li>
+        <li>
+          Role-based access control enforced in middleware (admins see the
+          organisation, reps only their own records), plus an audit log covering
+          create/update/delete/merge across every entity.
+        </li>
+        <li>
+          Analytics dashboard of KPI cards, revenue charts, deal-stage
+          distribution and sales forecast (Recharts); drag-and-drop Kanban
+          pipeline via DnD Kit; contacts at scale with filters, CSV
+          import/export and duplicate merge.
+        </li>
+        <li>
+          React Query for server state and caching, i18next EN/DE, persisted
+          dark/light theme, responsive from phone to desktop.
+        </li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span class="role"
+          >Virtual Art Gallery — Full-Stack MERN Gallery + 3D Tour</span
+        >
+        <span class="dates">2026</span>
+      </div>
+      <div class="stack">
+        React · Tailwind · Node/Express · MongoDB Atlas · three.js · Cloudinary <span class="sep">|</span>
+        <a href="https://virtual-art-gallery-v2.vercel.app">Live Demo</a> ·
+        <a href="https://github.com/JamshaidMehmood/virtual-art-gallery-v2"
+          >Source</a
+        >
+      </div>
+      <ul>
+        <li>
+          Full-stack MERN art gallery — browse, search and filter artwork, a
+          cart, uploads, and a walkable 3D tour.
+        </li>
+        <li>
+          Walkable 3D gallery tour built on three.js, code-split into its own
+          bundle chunk and loading artwork as WebGL textures (crossOrigin
+          handled) so the viewer never blocks first paint.
+        </li>
+        <li>
+          Cloudinary-backed upload pipeline with server-side watermarking,
+          perceptual-hash duplicate detection, and authenticated (non-public)
+          originals that survive redeploys.
+        </li>
+        <li>
+          JWT authentication with an email-OTP signup and password-reset flow,
+          over a Node/Express API and MongoDB Atlas.
+        </li>
+        <li>
+          Deployed end to end (frontend on Vercel, API on Render) with
+          production hardening: multi-origin CORS including a Vercel
+          preview-URL wildcard, and fail-fast boot checks that refuse to start
+          on missing config.
+        </li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span class="role">Instagram Clone — Full-Stack Photo Sharing App</span>
+        <span class="dates">2026</span>
+      </div>
+      <div class="stack">
+        React 18 · TypeScript · MUI · RTK Query · Node/Express · MongoDB
+        (GridFS) · Playwright <span class="sep">|</span>
+        <a href="https://instagram-lite-iota.vercel.app/">Live Demo</a> ·
+        <a href="https://github.com/JamshaidMehmood/instagram-lite">Source</a>
+      </div>
+      <ul>
+        <li>
+          Instagram-style social app — photo feed, likes, comments, follows,
+          saved posts, search and an activity inbox.
+        </li>
+        <li>
+          Keyset pagination on (createdAt, _id) rather than skip, likes made
+          idempotent by a unique index instead of read-then-write, and photos
+          held in GridFS so a feed page stays a few hundred bytes per post.
+        </li>
+        <li>
+          Auth with 15-minute in-memory access tokens and rotating httpOnly
+          refresh cookies that revoke the whole token family on reuse, plus
+          Google Sign-In verified server-side; the client funnels concurrent
+          401s through a single refresh.
+        </li>
+        <li>
+          Optimistic likes, saves and follows patched across every RTK Query
+          cache entry with rollback, and 46 Playwright end-to-end tests covering
+          auth, feed, profile, follow, search and responsive layout.
+        </li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span class="role"
+          >Fiverr Lite — Full-Stack Freelance Marketplace</span
+        >
+        <span class="dates">2026</span>
+      </div>
+      <div class="stack">
+        Next.js 14 · TypeScript · Express · MongoDB · Zod · Stripe · Socket.IO <span class="sep">|</span>
+        <a href="https://fiverr-lite-web.vercel.app/">Live Demo</a> ·
+        <a href="https://github.com/JamshaidMehmood/fiverr-lite">Source</a>
+      </div>
+      <ul>
+        <li>
+          Sole architect of a full v2 re-architecture of a legacy
+          freelance-marketplace prototype: audited v1 (297 issues documented),
+          then rebuilt a two-sided marketplace — tiered gig packages, an
+          escrow-style order lifecycle, real-time chat, deliveries and ratings,
+          an admin dashboard and an AI gig-copy assistant — end to end.
+        </li>
+        <li>
+          Closed a systemic BOLA/IDOR class by sourcing every actor id from the
+          authenticated JWT and deriving every order price server-side;
+          settlement is idempotent and verified via a signed Stripe webhook plus
+          a server-side PaymentIntent re-read, so orders can't double-charge or
+          be marked paid on the client's word.
+        </li>
+        <li>
+          Unified the stack behind a shared Zod contract (@fiverr-lite/shared)
+          that generates both runtime validation and static DTO types for the
+          API and web app, eliminating client/server drift.
+        </li>
+        <li>
+          Enforced an escrow-style order state machine with DB-level invariants
+          in a layered Express/TypeScript backend, and a Stripe/mock
+          payment-provider abstraction that runs the full checkout-to-settlement
+          flow offline; tested with Vitest + mongodb-memory-server and
+          Playwright.
+        </li>
+      </ul>
+    </div>
+
+    <h2>Technical Skills</h2>
+    <div class="skill">
+      <b>Core Frontend:</b> React, Next.js, JavaScript (ES6+), TypeScript,
+      HTML5, CSS3, SASS/SCSS, Tailwind CSS, jQuery
+    </div>
+    <div class="skill">
+      <b>State &amp; Routing:</b> Redux, React Hooks, React Query, Context API,
+      URL-synced state, deep-link filter patterns
+    </div>
+    <div class="skill">
+      <b>Test Automation:</b> WebdriverIO, Playwright, Mocha, Allure reporting,
+      page-object design, API seeding (supertest), Mailosaur (email/OTP),
+      GitHub Actions CI
+    </div>
+    <div class="skill">
+      <b>UI &amp; Styling:</b> Bootstrap, MUI, CSS Grid, Flexbox, responsive
+      layouts, cross-browser compatibility
+    </div>
+    <div class="skill">
+      <b>Data Visualization:</b> Chart.js, Recharts, hand-written SVG charting,
+      dashboard &amp; KPI design
+    </div>
+    <div class="skill">
+      <b>Backend:</b> Python, Django REST Framework, Node.js, Express 5, REST
+      API design, JWT, OAuth (Google), TOTP 2FA, bcrypt, role-based access
+      control
+    </div>
+    <div class="skill">
+      <b>Databases:</b> PostgreSQL, Prisma, MongoDB, Mongoose, SQL (reporting
+      &amp; analytical queries)
+    </div>
+    <div class="skill">
+      <b>Tooling:</b> Webpack, Vite, ESLint, Git, Figma, i18next, Formik, Yup,
+      DnD Kit, Docker (development)
+    </div>
+    <div class="skill">
+      <b>Practices:</b> Agile/Scrum, SDLC, code reviews, WCAG basics,
+      performance optimization
+    </div>
+
+    <h2>Education</h2>
+    <div class="edu">
+      <div class="row">
+        <span class="role">BS Information Technology</span>
+        <span class="dates">Jun 2020 – Jun 2024</span>
+      </div>
+      <div class="org">
+        Punjab University College of Information Technology (PUCIT), Lahore ·
+        CGPA 3.7/4.0
+      </div>
+    </div>
+    <div class="edu">
+      <div class="row">
+        <span class="role">Intermediate (ICS)</span>
+        <span class="dates">Mar 2018 – Mar 2020</span>
+      </div>
+      <div class="org">
+        Punjab College of Information Technology (PGC), Lahore · 90%, A+
+      </div>
+    </div>
+
+    <h2>Certifications</h2>
+    <div>Responsive Web Design — freeCodeCamp, 2024</div>
+  </body>
+</html>

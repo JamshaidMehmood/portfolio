@@ -100,7 +100,7 @@ export function TrendChart({ data }: { data: Point[] }) {
               x2={W - PAD.r}
               y1={t.y}
               y2={t.y}
-              stroke="rgba(255,255,255,0.06)"
+              stroke="var(--line)"
               strokeDasharray="3 4"
             />
             <text
@@ -109,7 +109,7 @@ export function TrendChart({ data }: { data: Point[] }) {
               textAnchor="end"
               className="mono"
               fontSize="9"
-              fill="#5c6572"
+              fill="var(--text-faint)"
             >
               {t.v}
             </text>
@@ -146,7 +146,7 @@ export function TrendChart({ data }: { data: Point[] }) {
             textAnchor="middle"
             className="mono"
             fontSize="9"
-            fill={hover === i ? "#eef1f5" : "#5c6572"}
+            fill={hover === i ? "var(--text)" : "var(--text-faint)"}
           >
             {p.label}
           </text>
@@ -160,14 +160,14 @@ export function TrendChart({ data }: { data: Point[] }) {
               x2={active.x}
               y1={PAD.t}
               y2={H - PAD.b}
-              stroke="rgba(255,255,255,0.18)"
+              stroke="var(--line-strong)"
             />
             <circle cx={active.x} cy={active.y} r="9" fill="rgba(123,97,255,0.18)" />
             <circle
               cx={active.x}
               cy={active.y}
               r="3.5"
-              fill="#0b0d10"
+              fill="var(--canvas-2)"
               stroke="#a78bfa"
               strokeWidth="2"
             />
@@ -180,7 +180,7 @@ export function TrendChart({ data }: { data: Point[] }) {
             cx={pts[pts.length - 1].x}
             cy={pts[pts.length - 1].y}
             r="3.5"
-            fill="#0b0d10"
+            fill="var(--canvas-2)"
             stroke="#22d3ee"
             strokeWidth="2"
             initial={{ scale: 0 }}

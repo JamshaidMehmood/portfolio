@@ -13,7 +13,7 @@ export function Skills() {
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
-          index="05"
+          index="06"
           eyebrow="Capabilities"
           title="Frontend-first, full-stack aware."
           lead="The bars are a self-assessment against what I've actually shipped — not a claim to mastery. Backend sits here because I design UI against the shape of the data, and sometimes change that shape."
@@ -44,7 +44,7 @@ export function Skills() {
                             {item.level}
                           </span>
                         </div>
-                        <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.055]">
+                        <div className="h-[3px] overflow-hidden rounded-full bg-surface-3">
                           <motion.div
                             className="h-full rounded-full bg-gradient-to-r from-accent to-accent-2"
                             initial={{ width: 0 }}

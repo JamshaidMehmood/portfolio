@@ -41,7 +41,7 @@ export function Contact() {
 
       <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
         <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-white/[0.035] px-3.5 py-1.5">
+          <span className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface-2 px-3.5 py-1.5">
             <span className="relative grid size-2 place-items-center">
               <span className="absolute size-2 rounded-full bg-pos/60 animate-pulse-ring" />
               <span className="size-2 rounded-full bg-pos" />
@@ -81,7 +81,7 @@ export function Contact() {
 
             <button
               onClick={copy}
-              className="flex items-center gap-2 rounded-full border border-line-strong bg-white/[0.035] px-5 py-3.5 text-[14px] font-medium text-text-dim transition-all duration-300 hover:border-accent/50 hover:text-text"
+              className="flex items-center gap-2 rounded-full border border-line-strong bg-surface-2 px-5 py-3.5 text-[14px] font-medium text-text-dim transition-all duration-300 hover:border-accent/50 hover:text-text"
               aria-live="polite"
             >
               {copied ? (

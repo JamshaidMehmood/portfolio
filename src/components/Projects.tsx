@@ -15,7 +15,7 @@ export function Projects() {
     <section id="projects" className="relative border-t border-line py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading
-          index="03"
+          index="04"
           eyebrow="Side projects"
           title="Where I build the backend too."
           lead="At work I own the frontend and extend the API behind it. On my own time I ship the whole thing — schema, endpoints, auth and client. These are on GitHub, and all four are deployed and running."
@@ -97,7 +97,7 @@ function FeaturedCard({ project: p }: { project: Project }) {
               href={p.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full border border-line-strong bg-white/[0.035] px-5 py-2.5 text-[13px] font-medium text-text transition-all duration-300 hover:border-accent/50 hover:bg-accent/[0.09]"
+              className="flex items-center gap-2 rounded-full border border-line-strong bg-surface-2 px-5 py-2.5 text-[13px] font-medium text-text transition-all duration-300 hover:border-accent/50 hover:bg-accent/[0.09]"
             >
               <GithubIcon className="size-4" />
               Source
@@ -151,7 +151,7 @@ function FeaturedCard({ project: p }: { project: Project }) {
                 {s.items.map((t) => (
                   <span
                     key={t}
-                    className="mono rounded-md border border-line bg-white/[0.03] px-2 py-1 text-[10.5px] text-text-dim"
+                    className="mono rounded-md border border-line bg-surface-1 px-2 py-1 text-[10.5px] text-text-dim"
                   >
                     {t}
                   </span>
@@ -207,7 +207,7 @@ function CompactCard({ project: p }: { project: Project }) {
           {p.stack.flatMap((s) => s.items).map((t) => (
             <span
               key={t}
-              className="mono rounded-md border border-line bg-white/[0.03] px-2 py-1 text-[10.5px] text-text-dim"
+              className="mono rounded-md border border-line bg-surface-1 px-2 py-1 text-[10.5px] text-text-dim"
             >
               {t}
             </span>
